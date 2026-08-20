@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Project in teamverband: het opzetten van een webapplicatie genaamd Gusto Italiano. De app is gebouwd met TypeScript, Node.js, Express en EJS templates.",
   "main": "src/index.ts",
-  "scripts": {
-    "start": "nodemon --watch src --watch views --watch public --ext ts,ejs,js,css,json --exec ts-node src/index.ts",
-    "build": "tsc",
-    "serve": "node dist/index.js",
-    "test": "jest"
-  },
+"scripts": {
+  "start": "nodemon --watch src --watch views --watch public --ext ts,ejs,js,css,json --exec ts-node src/index.ts",
+  "build": "tsc",
+  "postbuild": "node -e \"require('fs').cpSync('src/data','dist/data',{recursive:true})\"",
+  "serve": "node dist/index.js",
+  "test": "jest"
+},
   "author": "",
   "license": "ISC",
   "devDependencies": {
